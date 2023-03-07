@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Data Display</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Songs List</h1>
+
+  <form>
+    <label for="genres">Select Genre:</label>
+    <select id="genres" name="genres">
+    </select>
+    <button type="button" onclick="filterByGenre()">Filter</button>
+  </form>
+
+  <table id="songs-table">
+    <thead>
+      <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Genres</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    // fetch data from songs.json
+    fetch('songs.json')
+      .then(response => response.json())
+      .then(data => {
+        // populate select options with genres
+        const select = document.getElementById('genres');
+        const genres = new Set();
+        data.forEach(song => {
+          song.genres.forEach(genre => genres.add(genre));
+        });
+        genres.forEach(genre => {
+          const option = document.createElement('option');
+          option.value = genre;
+          option.textContent = genre;
+          select.appendChild(option);
+        });
+        // display all songs
+        displaySongs(data);
+      })
+      .catch(error => console.error(error));
+
+    // function to display songs in table
+    function displaySongs(songs) {
+      const tableBody = document.querySelector('#songs-table tbody');
+      tableBody.innerHTML = '';
+      songs.forEach(song => {
+        const row = document.createElement('tr');
+        const artistCell = document.createElement('td');
+        artistCell.textContent = song.artist;
+        const titleCell = document.createElement('td');
+        titleCell.textContent = song.title;
+        const genresCell = document.createElement('td');
+        genresCell.textContent = song.genres.join(', ');
+        const yearCell = document.createElement('td');
+        yearCell.textContent = song.year;
+        row.appendChild(artistCell);
+        row.appendChild(titleCell);
+        row.appendChild(genresCell);
+        row.appendChild(yearCell);
+        tableBody.appendChild(row);
+      });
+    }
+
+    // function to filter songs by genre
+    function filterByGenre() {
+      const select = document.getElementById('genres');
+      const selectedGenre = select.value;
+      fetch('songs.json')
+        .then(response => response.json())
+        .then(data => {
+          const filteredSongs = data.filter(song => song.genres.includes(selectedGenre));
+          displaySongs(filteredSongs);
+        })
+        .catch(error => console.error(error));
+    }
+  </script>
+
+</body>
+</html>

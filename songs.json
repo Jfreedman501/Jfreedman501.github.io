@@ -1,0 +1,92 @@
+"songs": [
+        {
+          "artist": "Michael Jackson",
+          "title": "Thriller",
+          "genres": ["Pop", "Rock"],
+          "year": 1982
+        },
+        {
+          "artist": "Elton John",
+          "title": "Rocket Man",
+          "genres": ["Rock", "Pop"],
+          "year": 1972
+        },
+        {
+          "artist": "Queen",
+          "title": "Bohemian Rhapsody",
+          "genres": ["Rock", "Classical"],
+          "year": 1975
+        },
+        {
+          "artist": "Whitney Houston",
+          "title": "I Will Always Love You",
+          "genres": ["Pop", "R&B"],
+          "year": 1992
+        },
+        {
+          "artist": "Alicia Keys",
+          "title": "Fallin'",
+          "genres": ["R&B", "Soul"],
+          "year": 2001
+        },
+        {
+          "artist": "U2",
+          "title": "With or Without You",
+          "genres": ["Rock", "Alternative"],
+          "year": 1987
+        },
+        {
+          "artist": "Adele",
+          "title": "Hello",
+          "genres": ["Pop", "Soul"],
+          "year": 2015
+        },
+        {
+          "artist": "The Rolling Stones",
+          "title": "Satisfaction",
+          "genres": ["Rock", "Blues"],
+          "year": 1965
+        },
+        {
+          "artist": "Nirvana",
+          "title": "Smells Like Teen Spirit",
+          "genres": ["Grunge", "Alternative", "Rock"],
+          "year": 1991
+        },
+        {
+          "artist": "Eminem",
+          "title": "Lose Yourself",
+          "genres": ["Hip-Hop", "Rap"],
+          "year": 2002
+        },
+        {
+          "artist": "Taylor Swift",
+          "title": "Shake It Off",
+          "genres": ["Pop", "Country"],
+          "year": 2014
+        },
+        {
+          "artist": ["Luis Fonsi", "Daddy Yankee"],
+          "title": "Despacito",
+          "genres": ["Pop", "Reggaeton"],
+          "year": 2017
+        },
+        {
+          "artist": "Beyoncé",
+          "title": "Crazy in Love (feat. Jay-Z)",
+          "genres": ["Pop", "R&B", "Hip-Hop"],
+          "year": 2003
+        },
+        {
+          "artist": "Billy Joel",
+          "title": "Piano Man",
+          "genres": ["Rock", "Folk Rock"],
+          "year": 1973
+        },
+        {
+          "artist": "The Beatles",
+          "title": "Hey Jude",
+          "genres": ["Rock", "Pop"],
+          "year": 1968
+        }
+      ]
