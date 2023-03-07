@@ -39,58 +39,55 @@
 		</tbody>
 	</table>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		// Get the songs from the JSON file
-		fetch('songs.json')
-			.then(response => response.json())
-			.then(data => {
-				// Populate the genre dropdown
-				const genreDropdown = document.getElementById('genre');
-				const genres = new Set();
-				data.songs.forEach(song => {
-					song.genres.forEach(genre => genres.add(genre));
-				});
-				genres.forEach(genre => {
-					const option = document.createElement('option');
-					option.value = genre;
-					option.textContent = genre;
-					genreDropdown.appendChild(option);
-				});
-
-				// Populate the table
-				const tbody = document.querySelector('#songTable tbody');
-				data.songs.forEach(song => {
-					const row = document.createElement('tr');
-					row.innerHTML = `
-						<td>${song.title}</td>
-						<td>${song.artist}</td>
-						<td>${song.genres.join(', ')}</td>
-						<td>${song.year}</td>
-					`;
-					tbody.appendChild(row);
-				});
+		$.get("songs.json", function(data) {
+			// Populate the genre dropdown
+			const genreDropdown = document.getElementById('genre');
+			const genres = new Set();
+			data.songs.forEach(song => {
+				song.genres.forEach(genre => genres.add(genre));
 			});
+			genres.forEach(genre => {
+				const option = document.createElement('option');
+				option.value = genre;
+				option.textContent = genre;
+				genreDropdown.appendChild(option);
+			});
+
+			// Populate the table
+			const tbody = document.querySelector('#songTable tbody');
+			data.songs.forEach(song => {
+				const row = document.createElement('tr');
+				row.innerHTML = `
+					<td>${song.title}</td>
+					<td>${song.artist}</td>
+					<td>${song.genres.join(', ')}</td>
+					<td>${song.year}</td>
+				`;
+				tbody.appendChild(row);
+			});
+		});
 
 		// Filter the songs by genre
 		function filterSongs() {
 			const selectedGenre = document.getElementById('genre').value;
 			const tbody = document.querySelector('#songTable tbody');
 			tbody.innerHTML = '';
-			fetch('songs.json')
-				.then(response => response.json())
-				.then(data => {
-					data.songs.filter(song => selectedGenre === '' || song.genres.includes(selectedGenre))
-						.forEach(song => {
-							const row = document.createElement('tr');
-							row.innerHTML = `
-								<td>${song.title}</td>
-								<td>${song.artist}</td>
-								<td>${song.genres.join(', ')}</td>
-								<td>${song.year}</td>
-							`;
-							tbody.appendChild(row);
-						});
-				});
+			$.get("songs.json", function(data) {
+				data.songs.filter(song => selectedGenre === '' || song.genres.includes(selectedGenre))
+					.forEach(song => {
+						const row = document.createElement('tr');
+						row.innerHTML = `
+							<td>${song.title}</td>
+							<td>${song.artist}</td>
+							<td>${song.genres.join(', ')}</td>
+							<td>${song.year}</td>
+						`;
+						tbody.appendChild(row);
+					});
+			});
 		}
 	</script>
 </body>
